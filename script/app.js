@@ -15340,7 +15340,16 @@ function handleKeyPressEvent(e) {
 }
 
 function pressKey(key) {
-    console.log(key)
+    let activeTiles = getActiveTiles();
+    if(activeTiles.length >= GUESS_WORD_LENGTH) return;
+    let nextTile = guessGrid.querySelector(":not([data-letter])");
+    nextTile.dataset.letter = key.toLowerCase();
+    nextTile.dataset.state = "active";
+    nextTile.textContent = key;
+}
+
+function getActiveTiles() {
+  return guessGrid.querySelectorAll("[data-state='active']");
 }
 
 function checkGuessedWord() {
@@ -15348,5 +15357,10 @@ function checkGuessedWord() {
 }
 
 function removeKey() {
-    console.log('remove key');
+  let activeTiles = getActiveTiles();
+  let lastTile = activeTiles[activeTiles.length - 1];
+  if(lastTile == undefined) return;
+  lastTile.textContent = "";
+  delete lastTile.dataset.state;
+  delete lastTile.dataset.letter;
 }
