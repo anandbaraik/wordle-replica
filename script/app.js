@@ -15291,6 +15291,11 @@ const wordDictionary = [
 ];
 const GUESS_WORD_LENGTH = 5;
 const guessGrid = document.querySelector("[data-guess-grid]");
+const offsetFromDate = new Date(2022, 0, 1);
+const msOffset = Date.now() - offsetFromDate;
+const dayOffset = msOffset / 1000 / 60 / 60 / 24;
+const targetWord = targetWords[Math.floor(dayOffset)];
+const toastContainer = document.querySelector("[data-alert-container]");
 
 function startPlaying() {
     document.addEventListener("click", handleClickEvent);
@@ -15353,7 +15358,11 @@ function getActiveTiles() {
 }
 
 function checkGuessedWord() {
-    console.log('check guess word');
+  let activeTiles = [...getActiveTiles()];
+  if(activeTiles.length !== GUESS_WORD_LENGTH){
+    showToast("Not enough letters!");
+    return;
+  }
 }
 
 function removeKey() {
@@ -15363,4 +15372,21 @@ function removeKey() {
   lastTile.textContent = "";
   delete lastTile.dataset.state;
   delete lastTile.dataset.letter;
+}
+
+function showToast(message, duration=1000) {
+
+  const toast = document.createElement("div");
+  toast.textContent = message;
+  toast.classList.add("alert");
+  toastContainer.prepend(toast);
+
+  if(duration == undefined) return;
+
+  setTimeout(() => {
+    toast.classList.add('hide');
+    toast.addEventListener('transitionend', () => {
+      toast.remove();
+    });
+  }, duration);
 }
