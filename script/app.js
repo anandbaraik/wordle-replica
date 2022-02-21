@@ -15359,8 +15359,20 @@ function getActiveTiles() {
 
 function checkGuessedWord() {
   let activeTiles = [...getActiveTiles()];
+
   if(activeTiles.length !== GUESS_WORD_LENGTH){
-    showToast("Not enough letters!");
+    showToast("Not enough letters.");
+    shakeTiles(activeTiles);
+    return;
+  }
+
+  const guessedWord = activeTiles.reduce((word, tile) => {
+    return word + tile.dataset.letter;
+  }, "");
+  
+  if(!wordDictionary.includes(guessedWord)){
+    showToast("Not in word list.");
+    shakeTiles(activeTiles);
     return;
   }
 }
@@ -15389,4 +15401,13 @@ function showToast(message, duration=1000) {
       toast.remove();
     });
   }, duration);
+}
+
+function shakeTiles(tiles) {
+  tiles.forEach(tile => {
+    tile.classList.add("shake");
+    tile.addEventListener("animationend", () => {
+      tile.classList.remove("shake");
+    }, {once:true});
+  });
 }
