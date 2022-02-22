@@ -15296,6 +15296,8 @@ const msOffset = Date.now() - offsetFromDate;
 const dayOffset = msOffset / 1000 / 60 / 60 / 24;
 const targetWord = targetWords[Math.floor(dayOffset)];
 const toastContainer = document.querySelector("[data-alert-container]");
+const FLIP_ANIMATION_DURATION = 500;
+const keyboard = document.querySelector("[data-keyboard]");
 
 function startPlaying() {
     document.addEventListener("click", handleClickEvent);
@@ -15375,6 +15377,12 @@ function checkGuessedWord() {
     shakeTiles(activeTiles);
     return;
   }
+
+  stopPlaying();
+
+  activeTiles.forEach((...params) => {
+    flipTile(...params, guessedWord);
+  });
 }
 
 function removeKey() {
@@ -15410,4 +15418,39 @@ function shakeTiles(tiles) {
       tile.classList.remove("shake");
     }, {once:true});
   });
+}
+
+function flipTile(tile, index, array, guess) {
+  let letter = tile.dataset.letter;
+  let key = keyboard.querySelector(`[data-key="${letter}"i]`);
+
+  setTimeout(() => {
+    tile.classList.add("flip");
+  }, index * FLIP_ANIMATION_DURATION / 2);
+
+  tile.addEventListener("transitionend", () => {
+    tile.classList.remove("flip");
+    if(letter === targetWord[index]) {
+      tile.dataset.state = "correct";
+      key.classList.add("correct");
+    } else if(wordDictionary.includes(letter)) {
+      tile.dataset.state = "wrong_location";
+      key.classList.add("wrong_location");
+    } else {
+      tile.dataset.state = "wrong";
+      key.classList.add("wrong");
+    }
+
+    if(index = array.length - 1) {
+      tile.addEventListener("transitionend", () => {
+        startPlaying();
+        checkWinOrLose(guess, array);
+      }, {once: true});
+    }
+  }, {once:true});
+}
+
+function checkWinOrLose(guess, array) {
+  console.log(guess);
+  console.log(array);
 }
