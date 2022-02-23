@@ -194,20 +194,21 @@ body {
 }
 @keyframes dance {
   20% {
-    transform: translateY(-50%);
+    transform: translateY(-5%);
   }
-  40% {
+  34% {
     transform: translateY(5%);
   }
   60% {
-    transform: translateY(-25%);
+    transform: translateY(-7.5%);
+  }
+  70% {
+    transform: translateY(7.5%);
   }
   80% {
-    transform: translateY(3%);
+    transform: translateY(5%);
   }
-  90% {
-    transform: translateY(-5%);
-  }
+
   100% {
     transform: translateY(0);
   }
