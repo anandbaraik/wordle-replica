@@ -15297,6 +15297,7 @@ const dayOffset = msOffset / 1000 / 60 / 60 / 24;
 const targetWord = targetWords[Math.floor(dayOffset)];
 const toastContainer = document.querySelector("[data-alert-container]");
 const FLIP_ANIMATION_DURATION = 500;
+const DANCE_ANIMATION_DURATION = 500;
 const keyboard = document.querySelector("[data-keyboard]");
 
 function startPlaying() {
@@ -15363,7 +15364,7 @@ function checkGuessedWord() {
   let activeTiles = [...getActiveTiles()];
 
   if(activeTiles.length !== GUESS_WORD_LENGTH){
-    showToast("Not enough letters.");
+    showToast("Not enough letters! 🤨");
     shakeTiles(activeTiles);
     return;
   }
@@ -15373,7 +15374,7 @@ function checkGuessedWord() {
   }, "");
   
   if(!wordDictionary.includes(guessedWord)){
-    showToast("Not in word list.");
+    showToast("Not in word list! 🥲");
     shakeTiles(activeTiles);
     return;
   }
@@ -15433,7 +15434,7 @@ function flipTile(tile, index, array, guess) {
     if(letter === targetWord[index]) {
       tile.dataset.state = "correct";
       key.classList.add("correct");
-    } else if(wordDictionary.includes(letter)) {
+    } else if(targetWord.includes(letter)) {
       tile.dataset.state = "wrong_location";
       key.classList.add("wrong_location");
     } else {
@@ -15441,7 +15442,7 @@ function flipTile(tile, index, array, guess) {
       key.classList.add("wrong");
     }
 
-    if(index = array.length - 1) {
+    if(index === array.length - 1) {
       tile.addEventListener("transitionend", () => {
         startPlaying();
         checkWinOrLose(guess, array);
@@ -15450,7 +15451,28 @@ function flipTile(tile, index, array, guess) {
   }, {once:true});
 }
 
-function checkWinOrLose(guess, array) {
-  console.log(guess);
-  console.log(array);
+function checkWinOrLose(guess, tiles) {
+  if(guess === targetWord) {
+    showToast("You won! 🎉", 5000);
+    danceTiles(tiles);
+    stopPlaying();
+    return;
+  }
+
+  let remainingTiles = guessGrid.querySelectorAll(":not([data-letter])");
+  if(remainingTiles.length === 0) {
+    showToast(`${targetWord.toUpperCase()} ✅`, 5000);
+    stopPlaying();
+  }
+}
+
+function danceTiles(tiles) {
+  tiles.forEach((tile, index) => {
+    setTimeout(() => {
+      tile.classList.add("dance");
+      tile.addEventListener("animationend", () => {
+        tile.classList.remove("dance");
+      }, {once:true});
+    }, index * DANCE_ANIMATION_DURATION / 5);
+  });
 }
