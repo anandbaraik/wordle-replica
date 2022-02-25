@@ -1,4 +1,4 @@
-const staticDevCoffee = "Sticky-Note-v1";
+const cacheWordleAsset = "wordle-replica-v1";
 const assets = [
   "/",
   "/index.html",
@@ -9,7 +9,7 @@ const assets = [
 ];
 self.addEventListener("install", installEvent => {
   installEvent.waitUntil(
-    caches.open(staticDevCoffee).then(cache => {
+    caches.open(cacheWordleAsset).then(cache => {
       cache.addAll(assets);
     })
   );
