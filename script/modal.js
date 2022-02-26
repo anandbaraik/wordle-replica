@@ -1,11 +1,12 @@
 let modal = document.getElementById("wordle_info");
 let closeModal = document.getElementsByClassName("close")[0];
+let openModal = document.getElementById("open_modal");
 
 const showModalInitially = () => modal.style.display = "block";
 
-// openModal.onclick = function() {
-//   modal.style.display = "block";
-// }
+openModal.onclick = function() {
+  modal.style.display = "block";
+}
 
 closeModal.onclick = function() {
   modal.style.display = "none";

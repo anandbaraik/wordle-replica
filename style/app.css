@@ -246,3 +246,33 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  margin: 0;
+  z-index: 99;
+}
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+.nav-right {
+  margin-right: 20px;
+}
+button.icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 4px;
+}
+.text-white {
+  color: #efefef;
+  fill: #efefef;
+}
+.download-icon {
+  float: right;
+  width: 70% !important;
+  object-fit: contain !important;
+}
