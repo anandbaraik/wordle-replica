@@ -276,3 +276,24 @@ button.icon {
   width: 70% !important;
   object-fit: contain !important;
 }
+.instruction-grid {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  flex-grow: 1;
+  grid-template-columns: repeat(5, 4em);
+  grid-template-rows: repeat(1, 4em);
+  gap: 0.25em;
+  margin-bottom: 1em;
+}
+.text-center {
+  text-align: center;
+}
+hr {
+  margin: 0 280px;
+}
+@media only screen and (max-width: 600px) {
+  hr {
+    margin: 0 25px;
+  }
+}

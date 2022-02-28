@@ -34,7 +34,53 @@
     <div id="wordle_info" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
+            <p>
+                Guess the <strong>WORDLE</strong> in six tries.
+            </p>
+            <p>
+                Each guess must be a valid five-letter word. Hit the enter button to submit.
+            </p>
+            <p>
+                After each guess, the color of the tiles will change to show how close your guess was to the word.
+            </p>
+            <hr>
+            <p class="text-center">
+                <strong>Examples</strong>
+            </p>
+            <div class="instruction-grid">
+                <div class="tile" data-state="correct">W</div>
+                <div class="tile">E</div>
+                <div class="tile">A</div>
+                <div class="tile">R</div>
+                <div class="tile">Y</div>
+            </div>
+            <p class="text-center">
+                The letter <strong>W</strong> is in the word and in the correct spot.
+            </p>
+            <div class="instruction-grid">
+                <div class="tile">P</div>
+                <div class="tile" data-state="wrong_location">I</div>
+                <div class="tile">L</div>
+                <div class="tile">L</div>
+                <div class="tile">S</div>
+            </div>
+            <p class="text-center">
+                The letter <strong>I</strong> is in the word but in the wrong spot.
+            </p>
+            <div class="instruction-grid">
+                <div class="tile">V</div>
+                <div class="tile">A</div>
+                <div class="tile">G</div>
+                <div class="tile" data-state="wrong">U</div>
+                <div class="tile">E</div>
+            </div>
+            <p class="text-center">
+                The letter <strong>U</strong> is not in the word in any spot.
+            </p>
+            <hr>
+            <p class="text-center">
+                <strong>A new WORDLE will be available each day!<strong></strong></strong>
+            </p>
         </div>
     </div>
     <!-- /modal -->
