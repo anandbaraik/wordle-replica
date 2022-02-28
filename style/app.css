@@ -24,6 +24,12 @@ body {
   .keyboard {
     margin-bottom: 3.5em;
   }
+  hr {
+    margin: 0 25px;
+  }
+  .nav-container {
+    margin-top: 10px !important;
+  }
 }
 .key {
   font-size: inherit;
@@ -250,7 +256,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 10px;
   margin: 0;
   z-index: 99;
 }
@@ -292,8 +298,6 @@ button.icon {
 hr {
   margin: 0 280px;
 }
-@media only screen and (max-width: 600px) {
-  hr {
-    margin: 0 25px;
-  }
+.p-06 {
+  margin: 0.6em;
 }
