@@ -25,12 +25,12 @@
     {
       "src": "/img/icons/Icon-144.png",
       "type": "image/png",
-      "sizes": "144x144"
+      "sizes": "144x119"
     },
     {
       "src": "/img/icons/Icon-152.png",
       "type": "image/png",
-      "sizes": "152x152"
+      "sizes": "152x126"
     },
     {
       "src": "/img/icons/Icon-192.png",
@@ -45,7 +45,7 @@
     {
       "src": "/img/icons/Icon-512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x425"
     },
     {
       "src": "/img/icons/favicon.png",
