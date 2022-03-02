@@ -2,23 +2,6 @@ let modal = document.getElementById("wordle_info");
 let closeModal = document.getElementsByClassName("close")[0];
 let openModal = document.getElementById("open_modal");
 
-
-
-async function getInstalledApps() {
-  const installedApps = await navigator.getInstalledRelatedApps();
-  const giraStatus = document.getElementById('test');
-  giraStatus.textContent = `resolved (${installedApps.length})`;
-  const giraResults = document.getElementById('test');
-  giraResults.textContent = `${installedApps.length}`;
-}
-
-if ('getInstalledRelatedApps' in navigator) {
-  getInstalledApps();
-} else {
-  const giraStatus = document.getElementById('test');
-  giraStatus.textContent = `not supported`;
-}
-
 const showModalInitially = () =>{
   if (
     document.cookie.split(";").filter((item) => {

@@ -1,6 +1,6 @@
 {
   "name": "Wordle Replica",
-  "short_name": "WR",
+  "short_name": "Wordle Replica",
   "start_url": "https://wordle-replica.netlify.app",
   "related_applications": [
       {"platform": "webapp", "url": "https://wordle-replica.netlify.app/manifest.json"}

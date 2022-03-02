@@ -1,25 +1,32 @@
 //manually install app
+const addBtn = document.querySelector('#download-app');
+async function getInstalledApps() {
+    if ('getInstalledRelatedApps' in navigator) {
+        let installedApps = await navigator.getInstalledRelatedApps();
+        if(installedApps.length > 0) {
+            addBtn.style.display = 'none';
+        }
+    }
+}
+
+getInstalledApps();
+
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', function(event) {
      event.preventDefault();
      deferredPrompt = event;
-     addBtn = document.querySelector('#download-app');
      addBtn.addEventListener('click', (e) => {
-         addBtn.style.display = 'none';
-         setTimeout(function(){
-            addBtn.style.display = 'block';
-         }, 60000);
-         // Show the prompt
-         deferredPrompt.prompt();
-         // Wait for the user to respond to the prompt
-         deferredPrompt.userChoice.then((choiceResult) => {
-             if (choiceResult.outcome === 'accepted') {
-                 console.log('User accepted the A2HS prompt');
-             } else {
-                 console.log('User dismissed the A2HS prompt');
-             }
-             deferredPrompt = null;
-         });
+        // Show the prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the A2HS prompt');
+            } else {
+                console.log('User dismissed the A2HS prompt');
+            }
+            deferredPrompt = null;
+        });
      });
 });
 
@@ -32,6 +39,9 @@ function addToHomeScreen() {
             } else {
                 console.log('User added to home screen');
             }
+            setTimeout(() => {
+                getInstalledApps();
+            }, 20000); //20s
         });
         deferredPrompt = null;
     }
