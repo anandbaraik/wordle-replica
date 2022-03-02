@@ -25,7 +25,7 @@ body {
     margin-bottom: 3.5em;
   }
   hr {
-    margin: 0 25px;
+    margin: 0 25px !important;
   }
   .nav-container {
     margin-top: 10px !important;

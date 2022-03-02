@@ -1,12 +1,24 @@
-const cacheWordleAsset = "wordle-replica-v1";
+const cacheWordleAsset = "wordle-replica-v2";
 const assets = [
   "/",
   "/index.html",
-  "/Js/index.js",
-  "/Js/app.js",
-  "/favicon.ico",
-  "/Css/index.css"
+  "/img/icons/Icon-72.png",
+  "/img/icons/Icon-96.png",
+  "/img/icons/Icon-128.png",
+  "/img/icons/Icon-144.png",
+  "/img/icons/Icon-152.png",
+  "/img/icons/Icon-192.png",
+  "/img/icons/Icon-384.png",
+  "/img/icons/Icon-512.png",
+  "/img/icons/favicon.png",
+  "/script/app.js",
+  "/script/modal.js",
+  "/script/pwa.js",
+  "/script/serviceWorker.js",
+  "/script/util.js",
+  "/style/app.css"
 ];
+
 self.addEventListener("install", installEvent => {
   installEvent.waitUntil(
     caches.open(cacheWordleAsset).then(cache => {
