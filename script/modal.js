@@ -4,22 +4,21 @@ let openModal = document.getElementById("open_modal");
 
 
 
-if ('getInstalledRelatedApps' in window.navigator) {
-  console.log('dsds');
-    async function start() {
-      const relatedApps = await navigator.getInstalledRelatedApps();
-      alert(relatedApps);
-      alert(relatedApps.length);
-    }
+async function getInstalledApps() {
+  const installedApps = await navigator.getInstalledRelatedApps();
+  const giraStatus = document.getElementById('test');
+  giraStatus.textContent = `resolved (${installedApps.length})`;
+  const giraResults = document.getElementById('test');
+  giraResults.textContent = 'no app';
+}
 
-    start();
- }
-        // const relatedApps = await navigator.getInstalledRelatedApps();
-        // relatedApps.forEach((app) => {
-        //     //if your PWA exists in the array it is installed
-        //     console.log(app.platform, app.url);
-        // });
-// }
+if ('getInstalledRelatedApps' in navigator) {
+  getInstalledApps();
+} else {
+  const giraStatus = document.getElementById('test');
+  giraStatus.textContent = `not supported`;
+}
+
 const showModalInitially = () =>{
   if (
     document.cookie.split(";").filter((item) => {
