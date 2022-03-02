@@ -9,7 +9,7 @@ async function getInstalledApps() {
   const giraStatus = document.getElementById('test');
   giraStatus.textContent = `resolved (${installedApps.length})`;
   const giraResults = document.getElementById('test');
-  giraResults.textContent = 'no app';
+  giraResults.textContent = `${installedApps.length}`;
 }
 
 if ('getInstalledRelatedApps' in navigator) {
