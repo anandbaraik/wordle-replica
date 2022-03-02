@@ -13,8 +13,6 @@ const assets = [
   "/img/icons/favicon.png",
   "/script/app.js",
   "/script/modal.js",
-  "/script/pwa.js",
-  "/script/serviceWorker.js",
   "/script/util.js",
   "/style/app.css"
 ];
