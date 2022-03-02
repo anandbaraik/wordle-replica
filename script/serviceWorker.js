@@ -1,4 +1,4 @@
-const cacheWordleAsset = "wordle-replica-v2";
+const cacheWordleAsset = "wordle-replica-v3";
 const assets = [
   "/",
   "/index.html",
