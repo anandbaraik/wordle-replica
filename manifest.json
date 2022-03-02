@@ -1,7 +1,7 @@
 {
   "name": "Wordle Replica",
   "short_name": "WR",
-  "start_url": "https://wordle-replica.netlify.app",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#fdfdfd",
   "theme_color": "#1975bf",
@@ -10,12 +10,12 @@
     {
       "src": "/img/icons/Icon-72.png",
       "type": "image/png",
-      "sizes": "72x72"
+      "sizes": "72x59"
     },
     {
       "src": "/img/icons/Icon-96.png",
       "type": "image/png",
-      "sizes": "96x96"
+      "sizes": "96x79"
     },
     {
       "src": "/img/icons/Icon-128.png",
