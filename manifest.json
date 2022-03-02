@@ -2,6 +2,9 @@
   "name": "Wordle Replica",
   "short_name": "WR",
   "start_url": "https://wordle-replica.netlify.app",
+  "related_applications": [
+      {"platform": "webapp", "url": "https://wordle-replica.netlify.app/manifest.json"}
+  ],
   "display": "standalone",
   "background_color": "#fdfdfd",
   "theme_color": "#1975bf",
