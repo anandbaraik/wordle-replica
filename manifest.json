@@ -1,7 +1,7 @@
 {
   "name": "Wordle Replica",
   "short_name": "WR",
-  "start_url": "index.html",
+  "start_url": "https://wordle-replica.netlify.app",
   "display": "standalone",
   "background_color": "#fdfdfd",
   "theme_color": "#1975bf",
