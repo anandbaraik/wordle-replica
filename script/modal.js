@@ -2,6 +2,24 @@ let modal = document.getElementById("wordle_info");
 let closeModal = document.getElementsByClassName("close")[0];
 let openModal = document.getElementById("open_modal");
 
+
+
+if ('getInstalledRelatedApps' in window.navigator) {
+  console.log('dsds');
+    async function start() {
+      const relatedApps = await navigator.getInstalledRelatedApps();
+      alert(relatedApps);
+      alert(relatedApps.length);
+    }
+
+    start();
+ }
+        // const relatedApps = await navigator.getInstalledRelatedApps();
+        // relatedApps.forEach((app) => {
+        //     //if your PWA exists in the array it is installed
+        //     console.log(app.platform, app.url);
+        // });
+// }
 const showModalInitially = () =>{
   if (
     document.cookie.split(";").filter((item) => {
