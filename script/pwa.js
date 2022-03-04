@@ -19,7 +19,7 @@ window.addEventListener('beforeinstallprompt', function(event) {
         addBtn.style.display = 'none';
         setTimeout(function(){
             addBtn.style.display = 'block';
-         }, 15000); //15s
+         }, 5000); //5s
         // Show the prompt
         deferredPrompt.prompt();
         // Wait for the user to respond to the prompt
@@ -29,7 +29,10 @@ window.addEventListener('beforeinstallprompt', function(event) {
             } else {
                 console.log('User dismissed the A2HS prompt');
             }
-            deferredPrompt = null;
+            setTimeout(() => {
+                getInstalledApps();
+                deferredPrompt = null;
+            }, 10000); //10s
         });
      });
 });
@@ -43,9 +46,6 @@ function addToHomeScreen() {
             } else {
                 console.log('User added to home screen');
             }
-            setTimeout(() => {
-                getInstalledApps();
-            }, 35000); //35s
         });
         deferredPrompt = null;
     }
