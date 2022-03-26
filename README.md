@@ -23,7 +23,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd wordle-replica.git
+  cd wordle-replica
 ```
 
 ## Screenshots
